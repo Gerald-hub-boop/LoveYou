@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gombalan AI ❤️✨</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #d9534f;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 12px 20px;
+            border: 2px solid #f8b1c0;
+            border-radius: 30px;
+            font-size: 1em;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #d9534f;
+            box-shadow: 0 0 10px rgba(238, 156, 167, 0.5);
+        }
+
+        button {
+            background: #d9534f;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(217, 83, 79, 0.4);
+        }
+
+        button:hover {
+            background: #c9302c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 48, 44, 0.5);
+        }
+
+        #gombalan-output {
+            margin-top: 30px;
+            font-size: 1.2em;
+            color: #d9534f;
+            min-height: 50px;
+            font-weight: bold;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            animation: rise 10s infinite linear;
+            z-index: 1;
+        }
+
+        @keyframes rise {
+            to {
+                transform: translateY(-105vh);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Gombalan AI ❤️✨</h1>
+    <div class="input-group">
+        <input type="text" id="nama" placeholder="Tulis namanya di sini...">
+    </div>
+    <button id="gombal-button">Buat Gombalan!</button>
+    <p id="gombalan-output"></p>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const namaInput = document.getElementById('nama');
+        const gombalButton = document.getElementById('gombal-button');
+        const gombalanOutput = document.getElementById('gombalan-output');
+        const body = document.querySelector('body');
+
+        const gombalanTemplates = [
+            // --- Kategori: Klasik & Basa-Basi ---
+            "Eh {nama}, bapak kamu astronot ya? Soalnya banyak bintang di mata kamu.",
+            "Aku nggak butuh peta, {nama}. Soalnya jalan pikiranku selalu menuju kamu.",
+            "Kalau kamu jadi air mata, {nama}, aku nggak akan pernah nangis. Takut kehilangan kamu.",
+            "Kerjaan kamu apa sih, {nama}? Kok tiap hari kerjaannya mondar-mandir di pikiranku.",
+
+            // --- Kategori: Cerdas & Permainan Kata ---
+            "Kopi apa yang paling pahit? Kopi-lih orang lain daripada aku, {nama}.",
+            "Di keyboard, huruf U dan I selalu sebelahan. Semoga di dunia nyata juga ya, {nama}.",
+            "Kamu itu seperti kamus, {nama}. Menambah arti dalam hidupku.",
+            "Cemilan apa yang bikin candu? Cemilan-dangi senyummu setiap hari, {nama}.",
+
+            // --- Kategori: Modern & Relevan ---
+            "Kalau {nama} itu playlist Spotify, kamu pasti 'On Repeat' di playlist hidupku.",
+            "Cintaku ke {nama} itu kayak sinyal WiFi di rumah, paling kuat dan terhubung secara otomatis.",
+            "Bukan cuma barang di keranjang oranye, {nama} juga udah aku check-out buat jadi milikku.",
+            "Chat dari yang lain aku arsip, chat dari {nama} aku pin. Soalnya kamu prioritas.",
+            
+            // --- Kategori: Intelektual & Berwawasan ---
+            "Kamu terbuat dari Tembaga dan Telurium ya, {nama}? Soalnya kamu itu Cu-Te.",
+            "Menurut hukum fisika, semua benda akan saling tertarik. Tapi kok aku cuma tertarik sama {nama} ya?",
+            "Hidupku tanpa {nama} itu kayak kode tanpa titik koma; penuh dengan error dan kebingungan.",
+            "Kalau {nama} itu sel, kamu pasti nukleusnya. Karena kamu adalah pusat dari segala aktivitasku.",
+
+            // --- Kategori: Puitis & Hiperbola ---
+            "Orang bilang senja itu indah, tapi mereka belum pernah lihat senyumanmu, {nama}.",
+            "Aku kira pelangi cuma ada tujuh warna, ternyata ada warna kedelapan: warna cinta saat melihat {nama}.",
+            "Jika cintaku pada {nama} adalah butiran pasir, semua pantai di dunia pun tak akan cukup.",
+            "Untuk {nama}, aku rela ikut lomba lari keliling dunia, asalkan kamu yang jadi garis finisnya."
+        ];
+
+        function generateGombalan() {
+            const nama = namaInput.value.trim();
+            if (nama) {
+                const randomIndex = Math.floor(Math.random() * gombalanTemplates.length);
+                const template = gombalanTemplates[randomIndex];
+                const finalGombalan = template.replace(/{nama}/g, `<strong>${nama}</strong>`);
+                gombalanOutput.innerHTML = finalGombalan;
+            } else {
+                gombalanOutput.textContent = "Isi namanya dulu dong, baru digombalin 😉";
+            }
+        }
+
+        gombalButton.addEventListener('click', generateGombalan);
+        namaInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') generateGombalan();
+        });
+
+        function createHearts() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerText = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 3 + 7 + 's';
+                body.appendChild(heart);
+                setTimeout(() => heart.remove(), 10000);
+            }, 300);
+        }
+
+        createHearts();
+    });
+</script>
+</body>
+</html>
