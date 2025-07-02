@@ -150,11 +150,40 @@
             "Untuk {nama}, aku rela ikut lomba lari keliling dunia, asalkan kamu yang jadi garis finisnya."
         ];
 
+        const antiMainstreamTemplates = [
+            // --- Kategori: Filosofis & Konseptual ---
+            "Setiap kali lihat kamu, {nama}, aku ngerasa dejavu. Mungkin di semesta paralel lain, kita memang udah bareng.",
+            "Kata orang, kita harus hidup di 'saat ini'. Lucunya, 'saat ini'-ku yang paling indah adalah saat ada {nama}.",
+            "Kalau ingatanku harus dihapus dan aku cuma boleh simpan satu, aku bakal simpan ingatan tentang caramu tertawa, {nama}.",
+            "Mungkin semua pilihan kecil dalam hidupku, dari salah belok sampai kehujanan, semuanya terjadi cuma biar aku bisa ketemu {nama} hari ini.",
+
+            // --- Kategori: Spesifik & Berbasis Hobi ---
+            "Bagi orang lain, kamu mungkin cuma NPC. Tapi buat aku, {nama} adalah *main quest* yang bikin game hidupku jadi seru.",
+            "Banyak puncak gunung yang indah, tapi puncak kebahagiaanku adalah pas bisa jalan santai bareng {nama}.",
+            "Orang lain butuh MSG biar masakannya enak, aku cuma butuh lihat senyum {nama} biar hariku jadi lebih 'gurih'.",
+            "Banyak lagu indah di dunia, tapi cuma suara {nama} yang jadi melodi favorit di kepalaku.",
+
+            // --- Kategori: Absurd & Jenaka Unik ---
+            "Kalau hidup ini bak merakit perabotan IKEA, {nama} itu kunci L-nya. Kelihatannya sepele, tapi tanpamu semuanya berantakan.",
+            "Kamu tahu angsa cuma punya satu pasangan seumur hidup? Aku bukan angsa, tapi aku mau belajar setia dari mereka, sama {nama}.",
+            "Aku ini kayak tombol 'Terms and Conditions', sering di-scroll dan dilewatin gitu aja. Tapi aku harap {nama} mau 'Agree' sama aku.",
+            "Kalau aku reinkarnasi jadi tukang parkir, cuma ke {nama} aku bakal bilang 'Maju... maju... yah, kelewat... hatinya'.",
+
+            // --- Kategori: Sederhana & Penuh Makna ---
+            "Aku nggak tahu gimana cara jelasinnya, tapi ngobrol sama {nama} rasanya seperti 'pulang'.",
+            "Hari-hariku kadang berantakan, tapi cerita ke {nama} di penghujung hari bikin semuanya terasa baik-baik saja.",
+            "Cara {nama} ketawa pas dengar lelucon garing itu... entah kenapa, jadi bagian favorit dari hariku.",
+            "Dari semua notifikasi yang masuk hari ini, notif dari {nama} adalah satu-satunya yang bikin aku senyum."
+        ];
+
+        // Gabungkan semua template
+        const allTemplates = [...gombalanTemplates, ...antiMainstreamTemplates];
+
         function generateGombalan() {
             const nama = namaInput.value.trim();
             if (nama) {
-                const randomIndex = Math.floor(Math.random() * gombalanTemplates.length);
-                const template = gombalanTemplates[randomIndex];
+                const randomIndex = Math.floor(Math.random() * allTemplates.length);
+                const template = allTemplates[randomIndex];
                 const finalGombalan = template.replace(/{nama}/g, `<strong>${nama}</strong>`);
                 gombalanOutput.innerHTML = finalGombalan;
             } else {
