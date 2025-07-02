@@ -110,8 +110,7 @@
     <button id="gombal-button">Buat Gombalan!</button>
     <p id="gombalan-output"></p>
 </div>
-
-<script>
+ <script>
     document.addEventListener('DOMContentLoaded', () => {
         const namaInput = document.getElementById('nama');
         const gombalButton = document.getElementById('gombal-button');
@@ -119,31 +118,22 @@
         const body = document.querySelector('body');
 
         const gombalanTemplates = [
-            // --- Kategori: Klasik & Basa-Basi ---
             "Eh {nama}, bapak kamu astronot ya? Soalnya banyak bintang di mata kamu.",
             "Aku nggak butuh peta, {nama}. Soalnya jalan pikiranku selalu menuju kamu.",
             "Kalau kamu jadi air mata, {nama}, aku nggak akan pernah nangis. Takut kehilangan kamu.",
             "Kerjaan kamu apa sih, {nama}? Kok tiap hari kerjaannya mondar-mandir di pikiranku.",
-
-            // --- Kategori: Cerdas & Permainan Kata ---
             "Kopi apa yang paling pahit? Kopi-lih orang lain daripada aku, {nama}.",
             "Di keyboard, huruf U dan I selalu sebelahan. Semoga di dunia nyata juga ya, {nama}.",
             "Kamu itu seperti kamus, {nama}. Menambah arti dalam hidupku.",
             "Cemilan apa yang bikin candu? Cemilan-dangi senyummu setiap hari, {nama}.",
-
-            // --- Kategori: Modern & Relevan ---
             "Kalau {nama} itu playlist Spotify, kamu pasti 'On Repeat' di playlist hidupku.",
             "Cintaku ke {nama} itu kayak sinyal WiFi di rumah, paling kuat dan terhubung secara otomatis.",
             "Bukan cuma barang di keranjang oranye, {nama} juga udah aku check-out buat jadi milikku.",
             "Chat dari yang lain aku arsip, chat dari {nama} aku pin. Soalnya kamu prioritas.",
-            
-            // --- Kategori: Intelektual & Berwawasan ---
             "Kamu terbuat dari Tembaga dan Telurium ya, {nama}? Soalnya kamu itu Cu-Te.",
             "Menurut hukum fisika, semua benda akan saling tertarik. Tapi kok aku cuma tertarik sama {nama} ya?",
             "Hidupku tanpa {nama} itu kayak kode tanpa titik koma; penuh dengan error dan kebingungan.",
             "Kalau {nama} itu sel, kamu pasti nukleusnya. Karena kamu adalah pusat dari segala aktivitasku.",
-
-            // --- Kategori: Puitis & Hiperbola ---
             "Orang bilang senja itu indah, tapi mereka belum pernah lihat senyumanmu, {nama}.",
             "Aku kira pelangi cuma ada tujuh warna, ternyata ada warna kedelapan: warna cinta saat melihat {nama}.",
             "Jika cintaku pada {nama} adalah butiran pasir, semua pantai di dunia pun tak akan cukup.",
@@ -151,33 +141,49 @@
         ];
 
         const antiMainstreamTemplates = [
-            // --- Kategori: Filosofis & Konseptual ---
             "Setiap kali lihat kamu, {nama}, aku ngerasa dejavu. Mungkin di semesta paralel lain, kita memang udah bareng.",
             "Kata orang, kita harus hidup di 'saat ini'. Lucunya, 'saat ini'-ku yang paling indah adalah saat ada {nama}.",
             "Kalau ingatanku harus dihapus dan aku cuma boleh simpan satu, aku bakal simpan ingatan tentang caramu tertawa, {nama}.",
             "Mungkin semua pilihan kecil dalam hidupku, dari salah belok sampai kehujanan, semuanya terjadi cuma biar aku bisa ketemu {nama} hari ini.",
-
-            // --- Kategori: Spesifik & Berbasis Hobi ---
             "Bagi orang lain, kamu mungkin cuma NPC. Tapi buat aku, {nama} adalah *main quest* yang bikin game hidupku jadi seru.",
             "Banyak puncak gunung yang indah, tapi puncak kebahagiaanku adalah pas bisa jalan santai bareng {nama}.",
             "Orang lain butuh MSG biar masakannya enak, aku cuma butuh lihat senyum {nama} biar hariku jadi lebih 'gurih'.",
             "Banyak lagu indah di dunia, tapi cuma suara {nama} yang jadi melodi favorit di kepalaku.",
-
-            // --- Kategori: Absurd & Jenaka Unik ---
             "Kalau hidup ini bak merakit perabotan IKEA, {nama} itu kunci L-nya. Kelihatannya sepele, tapi tanpamu semuanya berantakan.",
             "Kamu tahu angsa cuma punya satu pasangan seumur hidup? Aku bukan angsa, tapi aku mau belajar setia dari mereka, sama {nama}.",
             "Aku ini kayak tombol 'Terms and Conditions', sering di-scroll dan dilewatin gitu aja. Tapi aku harap {nama} mau 'Agree' sama aku.",
             "Kalau aku reinkarnasi jadi tukang parkir, cuma ke {nama} aku bakal bilang 'Maju... maju... yah, kelewat... hatinya'.",
-
-            // --- Kategori: Sederhana & Penuh Makna ---
             "Aku nggak tahu gimana cara jelasinnya, tapi ngobrol sama {nama} rasanya seperti 'pulang'.",
             "Hari-hariku kadang berantakan, tapi cerita ke {nama} di penghujung hari bikin semuanya terasa baik-baik saja.",
             "Cara {nama} ketawa pas dengar lelucon garing itu... entah kenapa, jadi bagian favorit dari hariku.",
             "Dari semua notifikasi yang masuk hari ini, notif dari {nama} adalah satu-satunya yang bikin aku senyum."
         ];
 
-        // Gabungkan semua template
-        const allTemplates = [...gombalanTemplates, ...antiMainstreamTemplates];
+        const gombalanLevelPakar = [
+            "Matahari hari ini emang terik, tapi kayaknya nggak sepanas tatapan {nama} yang bikin meleleh.",
+            "Dari semua menu di sini, 'melihat {nama}' jadi menu favoritku yang nggak ada di daftar harga.",
+            "Kalau {nama} itu buku, kamu pasti edisi langka dengan tanda tangan penulis yang nggak bakal aku pinjemin ke siapa-siapa.",
+            "Kata orang hujan itu 1% air, 99% kenangan. Buatku, hujan hari ini 100% jadi alasan buat mikirin {nama}.",
+            "Aku biasanya jago banyak hal, tapi kok deket {nama} mendadak jadi kikuk ya? Kayaknya sistem operasiku nge-hang.",
+            "Aku punya banyak stok lelucon garing, mau dengerin nggak? Imbalannya cukup lihat senyum {nama} aja, biar leluconku terasa lucu.",
+            "Aku orangnya pelupa, tapi anehnya wajah {nama} itu satu-satunya hal yang nggak bisa aku lupa. Ini konspirasi apa ya?",
+            "Prioritasku tadinya tidur, makan, kerja. Sejak kenal {nama}, prioritasnya jadi satu: gimana caranya biar dapat notif dari kamu.",
+            "Andai kita berdua karakter di film, menurutmu genre film kita apa, {nama}? Aku harap sih komedi romantis, bukan horor.",
+            "Dari skala 1 sampai 10, seberapa bahaya senyum {nama} itu? Soalnya aku udah jadi korbannya dan butuh data buat laporan.",
+            "Aku mau tanya sesuatu yang serius nih, {nama}. Kamu punya peta nggak? Peta menuju hatimu, soalnya aku tersesat nih.",
+            "Kalau satu hari ada 24 jam dan aku habiskan 8 jam buat mikirin kamu, berapa persen sisa kewarasanku menurut {nama}?",
+            "Di daftar hal-hal yang bikin bahagia, nama {nama} sekarang ada di urutan paling atas, ngalahin tidur nyenyak dan makanan enak.",
+            "Rencanaku buat besok sih biasa aja, tapi bakal jadi luar biasa kalau ada 'ngobrol sama {nama}' di dalamnya.",
+            "Nanti kalau kita udah tua, kita ceritain ke cucu kita ya, gimana awalnya aku pakai gombalan AI buat deketin {nama}.",
+            "Kalau nanti namaku masuk koran, aku harap judulnya bukan 'Menang Undian', tapi 'Berhasil Mendapatkan Hati {nama}'."
+        ];
+
+        // ✅ Gabungkan semua ke satu array utama
+        const allTemplates = [
+            ...gombalanTemplates,
+            ...antiMainstreamTemplates,
+            ...gombalanLevelPakar
+        ];
 
         function generateGombalan() {
             const nama = namaInput.value.trim();
